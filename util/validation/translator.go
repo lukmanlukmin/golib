@@ -8,7 +8,7 @@ import (
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	enTranslations "github.com/go-playground/validator/v10/translations/en"
-	"gitlab.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/log"
 )
 
 func TranslateError(err error, trans ut.Translator) (errs []error) {

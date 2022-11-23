@@ -13,7 +13,7 @@ import (
 
 	"github.com/Shopify/sarama"
 
-	"gitlab.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/log"
 )
 
 const (

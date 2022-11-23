@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"gitlab.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/log"
 )
 
 func DumpToString(v interface{}) string {

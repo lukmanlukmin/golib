@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/fasthttp/router"
+	"github.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/router/response"
 	"github.com/valyala/fasthttp"
-	"gitlab.com/lukmanlukmin/golib/log"
-	"gitlab.com/lukmanlukmin/golib/router/response"
 )
 
 type MyRouter struct {

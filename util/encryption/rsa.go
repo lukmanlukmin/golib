@@ -8,7 +8,7 @@ import (
 	"encoding/pem"
 	"fmt"
 
-	"gitlab.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/log"
 
 	"github.com/lestrrat-go/jwx/jwk"
 )

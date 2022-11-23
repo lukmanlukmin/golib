@@ -9,7 +9,7 @@ import (
 	"hash"
 	"io/ioutil"
 
-	"gitlab.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/log"
 
 	"github.com/xdg/scram"
 )

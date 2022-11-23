@@ -1,8 +1,8 @@
 package router
 
 import (
+	"github.com/lukmanlukmin/golib/router/response"
 	"github.com/valyala/fasthttp"
-	"gitlab.com/lukmanlukmin/golib/router/response"
 )
 
 type Handle func(*fasthttp.RequestCtx) *response.JSONResponse

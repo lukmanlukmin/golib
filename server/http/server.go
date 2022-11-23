@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	"gitlab.com/lukmanlukmin/golib/log"
+	"github.com/lukmanlukmin/golib/log"
 
 	"github.com/fasthttp/router"
 	"github.com/valyala/fasthttp"
