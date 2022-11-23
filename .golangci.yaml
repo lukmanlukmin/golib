@@ -1,0 +1,141 @@
+run:
+  timeout: 10m
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - contextcheck
+    - deadcode
+    - unused
+    - durationcheck
+    - errcheck
+    - errorlint
+    - exportloopref
+    - forbidigo
+    - forcetypeassert
+    - gocritic
+    - gofmt
+    - gomnd
+    - goimports
+    - gosec
+    - govet
+    - ifshort
+    - ineffassign
+    - makezero
+    - misspell
+    - nilerr
+    - nilnil
+    - nolintlint
+    - rowserrcheck
+    - staticcheck
+    - sqlclosecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - wastedassign
+linters-settings:
+  errcheck:
+    # Report about not checking of errors in type assertions: `a := b.(MyStruct)`.
+    # Such cases aren't reported by default.
+    # Default: false
+    check-type-assertions: true
+      # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`.
+      # Such cases aren't reported by default.
+      # Default: false
+    check-blank: true
+
+  forbidigo:
+    # Forbid the following identifiers (list of regexp).
+    forbid:
+      - ^print.*$
+      - 'fmt\.Print.*'
+
+  gocritic:
+    # Which checks should be enabled; can't be combined with 'disabled-checks'.
+    # See https://go-critic.github.io/overview#checks-overview.
+    # To check which checks are enabled run `GL_DEBUG=gocritic golangci-lint run`.
+    # By default, list of stable checks is used.
+    enabled-checks:
+      - appendAssign
+      - argOrder
+      - badCall
+      - badCond
+      - badLock
+      - caseOrder
+      - deprecatedComment
+      - dupArg
+      - dupBranchBody
+      - dupCase
+      - dupSubExpr
+      - flagName
+      - mapKey
+      - nilValReturn
+      - offBy1
+      - sloppyTypeAssert
+      - sprintfQuotedString
+      - commentFormatting
+      - deferUnlambda
+      - dupImport
+      - emptyFallthrough
+      - exposedSyncMutex
+      - ifElseChain
+      - newDeref
+      - paramTypeCombine
+      - preferFilepathJoin
+      - ptrToRefParam
+      - singleCaseSwitch
+      - sloppyLen
+      - typeAssertChain
+      - typeSwitchVar
+      - typeUnparen
+      - underef
+      - unlambda
+      - valSwap
+      - equalFold
+
+  gomnd:
+    # List of enabled checks, see https://github.com/tommy-muehle/go-mnd/#checks for description.
+    checks:
+      - argument
+      - case
+      - condition
+      - operation
+      - return
+      - assign
+    ignored-files:
+      - '.*const.go'
+      - '.*config.go'
+
+  gosec:
+    exclude-generated: true
+    severity: "low"
+    confidence: "low"
+
+  ifshort:
+    max-decl-chars: 50
+
+  nolintlint:
+      # Disable to ensure that all nolint directives actually have an effect.
+      # Default: false
+    allow-unused: false
+      # Disable to ensure that nolint directives don't have a leading space.
+      # Default: true
+    allow-leading-space: true
+      # Enable to require an explanation of nonzero length after each nolint directive.
+      # Default: false
+    require-explanation: true
+      # Enable to require nolint directives to mention the specific linter being suppressed.
+      # Default: false
+    require-specific: true
+
+    unparam:
+      check-exported: false
+
+severity:
+  default-severity: major
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0

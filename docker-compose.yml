@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  golib:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /home/golang/lib
+    container_name: golib
+    volumes:
+      - .:/home/golang/lib
+    tty: true
