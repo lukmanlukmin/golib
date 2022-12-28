@@ -51,9 +51,15 @@ type TransactionFunc func(ctx context.Context) error
 
 // wrapper function to handle transaction process
 func (r *BaseStorage) WithTransaction(ctx context.Context, fn TransactionFunc) error {
+
 	tx := getTxFromContext(ctx)
+	// if no available transaction, set to default transaction
 	if tx == nil {
-		return ErrSQLTransactionNoTrx
+		newCtx, err := r.setDefaultTrx(ctx)
+		if err != nil {
+			return err
+		}
+		ctx = newCtx
 	}
 
 	defer func(trx *sqlx.Tx) {
@@ -80,6 +86,12 @@ func (r *BaseStorage) WithTransaction(ctx context.Context, fn TransactionFunc) e
 func (r *BaseStorage) SetTxToContext(ctx context.Context, tx *sqlx.Tx) context.Context {
 	ctx = context.WithValue(ctx, txKey, tx)
 	return ctx
+}
+
+// set default transaction config to context
+func (r *BaseStorage) setDefaultTrx(ctx context.Context) (context.Context, error) {
+	tx, err := r.db.Master.BeginTxx(ctx, &sql.TxOptions{})
+	return r.SetTxToContext(ctx, tx), err
 }
 
 // get transaction from context. return null if not available
