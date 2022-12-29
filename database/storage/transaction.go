@@ -18,7 +18,7 @@ type (
 	ctxTrxKey string
 
 	BaseStorage struct {
-		db *connection.Store
+		Storage *connection.Store
 	}
 
 	SQLExec interface {
@@ -41,9 +41,9 @@ type (
 	}
 )
 
-func NewBaseStorage(db *connection.Store) *BaseStorage {
+func NewBaseStorage(store *connection.Store) *BaseStorage {
 	return &BaseStorage{
-		db: db,
+		Storage: store,
 	}
 }
 
@@ -90,7 +90,7 @@ func (r *BaseStorage) SetTxToContext(ctx context.Context, tx *sqlx.Tx) context.C
 
 // set default transaction config to context
 func (r *BaseStorage) setDefaultTrx(ctx context.Context) (context.Context, error) {
-	tx, err := r.db.Master.BeginTxx(ctx, &sql.TxOptions{})
+	tx, err := r.Storage.Master.BeginTxx(ctx, &sql.TxOptions{})
 	return r.SetTxToContext(ctx, tx), err
 }
 
